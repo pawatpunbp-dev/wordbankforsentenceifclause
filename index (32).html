@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>คลังคำศัพท์สร้างประโยค If-Clause</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Sarabun","TH Sarabun New","Leelawadee UI",Tahoma,sans-serif;background:linear-gradient(180deg,#e0f2fe,#f0fdf4 60%,#fefce8);min-height:100vh;color:#1e293b;font-size:17px;line-height:1.5;padding-bottom:110px}
+.wrap{max-width:900px;margin:0 auto;padding:12px}
+header{text-align:center;padding:8px 0 4px}
+header h1{font-size:1.6rem;color:#0c4a6e}
+header p{color:#475569;font-size:.95rem}
+.tip{background:#fff;border-radius:14px;padding:8px 12px;margin:8px 0;font-size:.92rem;box-shadow:0 2px 0 #bae6fd}
+.tip b{color:#0369a1}
+.search{display:flex;gap:8px;margin:8px 0}
+.search input{flex:1;font:inherit;padding:9px 14px;border:2px solid #bae6fd;border-radius:999px;outline:none}
+.search input:focus{border-color:#0ea5e9}
+.topics{display:flex;flex-wrap:wrap;gap:6px;padding:4px 0 8px}
+.tp{flex:1 1 30%;min-width:100px;font:inherit;font-size:.85rem;font-weight:700;border:2px solid #cbd5e1;background:#fff;border-radius:14px;padding:5px 6px;cursor:pointer;text-align:center;line-height:1.2}
+.tp span{display:block;font-size:1.4rem}
+.tp small{display:block;font-weight:400;font-size:.75rem;color:#64748b}
+.tp.on{background:#0369a1;border-color:#0369a1;color:#fff}
+.tp.on small{color:#e0f2fe}
+.pos{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px}
+.pb{font:inherit;font-size:.92rem;font-weight:700;border:2px solid var(--c);color:var(--c);background:#fff;border-radius:999px;padding:3px 12px;cursor:pointer}
+.pb.on{background:var(--c);color:#fff}
+.sec{margin:12px 0 4px;font-weight:800;color:var(--c);display:flex;align-items:center;gap:8px}
+.sec small{font-weight:400;color:#64748b}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.card{background:#fff;border-radius:14px;padding:8px 10px;cursor:pointer;border:2px solid transparent;border-left:7px solid var(--c);box-shadow:0 2px 0 rgba(0,0,0,.08);position:relative;transition:transform .1s}
+.card:active{transform:scale(.97)}
+.card:hover{border-color:var(--c)}
+.card .en{font-size:1.2rem;font-weight:800;line-height:1.2;word-break:break-word}
+.card .rd{font-size:.82rem;color:#be123c}
+.card .th{font-size:.9rem;color:#334155}
+.card .forms{font-size:.78rem;color:#7c3aed;font-weight:700}
+.card .star{position:absolute;top:4px;right:6px;font-size:.9rem}
+.empty{text-align:center;color:#64748b;padding:30px}
+#sheet{position:fixed;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.25);padding:14px 16px 20px;transform:translateY(110%);transition:transform .22s;z-index:30;max-height:78vh;overflow:auto}
+#sheet.on{transform:none}
+.in{max-width:720px;margin:0 auto}
+.x{float:right;font:inherit;cursor:pointer;border:none;background:#f1f5f9;border-radius:99px;width:40px;height:40px;font-size:1.1rem}
+.badge{display:inline-block;background:var(--c);color:#fff;border-radius:99px;padding:1px 10px;font-size:.85rem;font-weight:700}
+.big{font-size:2rem;font-weight:800;color:#0369a1;line-height:1.2;margin:4px 0}
+.mean{font-size:1.15rem;margin:4px 0}
+.mean b,.rdl b{color:#be123c}
+.fr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px dashed #cbd5e1;padding:7px 0}
+.fr .lbl{background:#ede9fe;color:#6d28d9;font-weight:800;border-radius:8px;padding:0 8px;min-width:44px;text-align:center}
+.fr .w{font-size:1.3rem;font-weight:800}
+.fr .r{color:#be123c}
+.say{font:inherit;font-size:.95rem;cursor:pointer;border:none;background:#e0f2fe;color:#0369a1;border-radius:99px;padding:5px 12px;font-weight:700}
+.say.th{background:#fce7f3;color:#be185d}
+.btns{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.hint{background:#fef9c3;border-radius:10px;padding:6px 10px;font-size:.9rem;margin-top:6px}
+.keep{font:inherit;font-weight:800;cursor:pointer;border:none;border-radius:12px;padding:9px 14px;width:100%;margin-top:10px;background:#fde68a;color:#92400e}
+.keep.kept{background:#e2e8f0;color:#475569}
+#basketBtn{position:fixed;right:14px;bottom:14px;z-index:20;font:inherit;font-weight:800;border:none;border-radius:999px;padding:12px 18px;background:#f59e0b;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.25);cursor:pointer}
+.bk{display:flex;align-items:center;gap:8px;border-bottom:1px dashed #cbd5e1;padding:6px 0}
+.bk .t{flex:1}
+.bk .t b{font-size:1.1rem}
+.bk .t span{color:#475569;font-size:.9rem}
+.rm{font:inherit;border:none;background:#fee2e2;color:#b91c1c;border-radius:99px;padding:3px 10px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>🧩 คลังคำศัพท์สร้างประโยค If-Clause</h1><p>เลือกหมวด → เลือกชนิดของคำ → แตะคำเพื่อดูคำอ่าน คำแปล และฟังเสียง</p></header>
+<div class="tip">💡 <b>คำนาม</b> ใช้เป็นประธานหรือกรรม • <b>คำกริยา</b> ต้องผันตาม Type (Type 1 ใช้ V1, Type 2 ใช้ V2, Type 3 ใช้ had + V3) • <b>คุณศัพท์</b> ใช้หลัง be เช่น is / were / had been • กด <b>⭐ เก็บคำ</b> เพื่อรวบรวมคำที่จะใช้ แล้ว <b>แต่งประโยคเองในใบงาน</b></div>
+<div class="search"><input id="q" placeholder="🔍 ค้นหาคำศัพท์ (อังกฤษหรือไทย)"></div>
+<div class="topics" id="topics"></div>
+<div class="pos" id="pos"></div>
+<div id="list"></div>
+</div>
+<button id="basketBtn">⭐ คำที่เก็บไว้ (0)</button>
+<div id="sheet"><div class="in" id="sheetIn"></div></div>
+<script>
+/* รูปแบบข้อมูล: คำทั่วไป = "word|คำอ่าน|คำแปล"  คำกริยา = "V1|อ่าน|V2|อ่าน|V3|อ่าน|คำแปล" */
+var TOPICS=[
+{id:'school',ic:'🏫',name:'โรงเรียนและชีวิตประจำวัน',
+ noun:['homework|โฮม-เวิร์ค|การบ้าน','exam|อิก-แซม|การสอบ','teacher|ที-เชอร์|ครู','classroom|คลาส-รูม|ห้องเรียน','uniform|ยู-นิ-ฟอร์ม|เครื่องแบบนักเรียน','library|ไล-บรา-รี่|ห้องสมุด','alarm clock|อะ-ลาร์ม คล็อค|นาฬิกาปลุก','good grades|กู๊ด เกรดส์|เกรดดี'],
+ verb:['study|สตัด-ดี้|studied|สตัด-ดี้ด|studied|สตัด-ดี้ด|เรียน','pass|พาส|passed|พาสท์|passed|พาสท์|สอบผ่าน','fail|เฟล|failed|เฟลด์|failed|เฟลด์|สอบตก','wake up|เวค อัพ|woke up|โวค อัพ|woken up|โว-เคิ่น อัพ|ตื่นนอน','forget|เฟอร์-เก็ท|forgot|เฟอร์-ก็อท|forgotten|เฟอร์-ก็อท-เทิ่น|ลืม','finish|ฟิน-นิช|finished|ฟิน-นิชท์|finished|ฟิน-นิชท์|ทำเสร็จ','miss|มิส|missed|มิสท์|missed|มิสท์|พลาด, ไม่ทัน','read|รีด|read|เรด|read|เรด|อ่าน'],
+ adj:['late|เลท|สาย','early|เออร์-ลี่|เช้า, ก่อนเวลา','tired|ไท-เอิร์ด|เหนื่อย','sleepy|สลีพ-ปี้|ง่วงนอน','ready|เร-ดี้|พร้อม'],
+ adv:['on time|ออน ไทม์|ตรงเวลา','hard|ฮาร์ด|อย่างขยัน, อย่างหนัก','every day|เอฟ-วรี่ เดย์|ทุกวัน']},
+{id:'weather',ic:'🌦️',name:'อากาศและธรรมชาติ',
+ noun:['rain|เรน|ฝน','sun|ซัน|ดวงอาทิตย์','storm|สตอร์ม|พายุ','flood|ฟลัด|น้ำท่วม','tree|ทรี|ต้นไม้','river|ริฟ-เวอร์|แม่น้ำ','umbrella|อัม-เบรล-ล่า|ร่ม','snow|สโนว์|หิมะ'],
+ verb:['rain|เรน|rained|เรนด์|rained|เรนด์|ฝนตก','shine|ไชน์|shone|โชน|shone|โชน|ส่องแสง','plant|แพลนท์|planted|แพลน-ทิด|planted|แพลน-ทิด|ปลูก','grow|โกรว์|grew|กรู|grown|โกรน|เติบโต','melt|เมลท์|melted|เมล-ทิด|melted|เมล-ทิด|ละลาย','cut|คัท|cut|คัท|cut|คัท|ตัด','protect|โพร-เทคท์|protected|โพร-เทค-ทิด|protected|โพร-เทค-ทิด|ปกป้อง','bring|บริง|brought|บรอท|brought|บรอท|นำมา, พกมา'],
+ adj:['hot|ฮอท|ร้อน','cold|โคลด์|หนาว, เย็น','sunny|ซัน-นี่|แดดออก','wet|เว็ท|เปียก','dry|ดราย|แห้ง'],
+ adv:['outside|เอาท์-ไซด์|ข้างนอก','tomorrow|ทู-มอร์-โรว์|พรุ่งนี้','heavily|เฮฟ-วิ-ลี่|อย่างหนัก (เช่น ฝนตกหนัก)']},
+{id:'health',ic:'💪',name:'สุขภาพและร่างกาย',
+ noun:['medicine|เมด-ดิ-ซิน|ยา','doctor|ด็อก-เตอร์|หมอ','headache|เฮด-เอค|อาการปวดหัว','fever|ฟี-เวอร์|ไข้','vegetables|เวจ-เทอะ-เบิ้ลส์|ผัก','exercise|เอ็ก-เซอร์-ไซส์|การออกกำลังกาย','teeth|ทีธ|ฟัน','water|วอ-เทอร์|น้ำ'],
+ verb:['exercise|เอ็ก-เซอร์-ไซส์|exercised|เอ็ก-เซอร์-ไซส์ด|exercised|เอ็ก-เซอร์-ไซส์ด|ออกกำลังกาย','eat|อีท|ate|เอท|eaten|อี-เทิ่น|กิน','drink|ดริงค์|drank|แดรงค์|drunk|ดรังค์|ดื่ม','sleep|สลีพ|slept|สเล็พท์|slept|สเล็พท์|นอนหลับ','take|เทค|took|ทุค|taken|เท-เคิ่น|กิน (ยา), ใช้','see|ซี|saw|ซอ|seen|ซีน|พบ (หมอ), เห็น','rest|เรสท์|rested|เรส-ทิด|rested|เรส-ทิด|พักผ่อน','brush|บรัช|brushed|บรัชท์|brushed|บรัชท์|แปรง'],
+ adj:['sick|ซิค|ป่วย','healthy|เฮล-ธี่|สุขภาพดี','strong|สตรอง|แข็งแรง','fat|แฟท|อ้วน','hungry|ฮัง-กรี้|หิว'],
+ adv:['well|เวล|ดี (เช่น นอนหลับดี)','enough|อี-นัฟ|เพียงพอ','too much|ทู มัช|มากเกินไป']},
+{id:'money',ic:'💰',name:'เงินและการซื้อของ',
+ noun:['money|มัน-นี่|เงิน','price|ไพรซ์|ราคา','wallet|วอล-เล็ท|กระเป๋าสตางค์','lottery ticket|ล็อต-เตอ-รี่ ทิก-เก็ท|สลากกินแบ่ง, ลอตเตอรี่','prize|ไพรซ์|รางวัล','shop|ช็อป|ร้านค้า','sale|เซล|การลดราคา','gift|กิฟท์|ของขวัญ'],
+ verb:['buy|บาย|bought|บอท|bought|บอท|ซื้อ','sell|เซล|sold|โซลด์|sold|โซลด์|ขาย','save|เซฟ|saved|เซฟด์|saved|เซฟด์|เก็บออม','spend|สเปนด์|spent|สเปนท์|spent|สเปนท์|ใช้จ่าย','win|วิน|won|วัน|won|วัน|ชนะ, ถูก (รางวัล)','lose|ลูซ|lost|ลอสท์|lost|ลอสท์|ทำหาย, แพ้','pay|เพย์|paid|เพด|paid|เพด|จ่าย','find|ไฟนด์|found|ฟาวนด์|found|ฟาวนด์|หาเจอ'],
+ adj:['rich|ริช|รวย','poor|พัวร์|จน','expensive|อิก-สเปน-ซิฟ|แพง','cheap|ชีพ|ถูก (ราคา)','free|ฟรี|ฟรี, ไม่เสียเงิน'],
+ adv:['a lot of|อะ ล็อท ออฟ|มาก (ใช้หน้าคำนาม)','next month|เน็กซ์ท มันธ์|เดือนหน้า']},
+{id:'travel',ic:'🧳',name:'การเดินทางท่องเที่ยว',
+ noun:['trip|ทริพ|การเดินทางท่องเที่ยว','beach|บีช|ชายหาด','mountain|เมาน์-เท่น|ภูเขา','hotel|โฮ-เทล|โรงแรม','passport|พาส-พอร์ท|หนังสือเดินทาง','train|เทรน|รถไฟ','plane|เพลน|เครื่องบิน','map|แมพ|แผนที่'],
+ verb:['travel|แทรฟ-เวิ่ล|traveled|แทรฟ-เวิ่ลด์|traveled|แทรฟ-เวิ่ลด์|เดินทาง','visit|วิส-ซิท|visited|วิส-ซิ-ทิด|visited|วิส-ซิ-ทิด|ไปเที่ยว, ไปเยี่ยม','go|โก|went|เวนท์|gone|กอน|ไป','leave|ลีฟ|left|เลฟท์|left|เลฟท์|ออกเดินทาง, จากไป','arrive|อะ-ไรฟ์|arrived|อะ-ไรฟ์ด|arrived|อะ-ไรฟ์ด|มาถึง','fly|ฟลาย|flew|ฟลู|flown|โฟลน|บิน','book|บุ๊ค|booked|บุ๊คท์|booked|บุ๊คท์|จอง','swim|สวิม|swam|สแวม|swum|สวัม|ว่ายน้ำ'],
+ adj:['far|ฟาร์|ไกล','beautiful|บิว-ที-ฟูล|สวยงาม','crowded|คราว-ดิด|คนแน่น','lost|ลอสท์|หลงทาง','excited|อิก-ไซ-ทิด|ตื่นเต้น'],
+ adv:['abroad|อะ-บรอด|ต่างประเทศ','next week|เน็กซ์ท วีค|สัปดาห์หน้า']},
+{id:'food',ic:'🍳',name:'อาหารและการทำอาหาร',
+ noun:['breakfast|เบรค-ฟาสท์|อาหารเช้า','dinner|ดิน-เนอร์|อาหารเย็น','rice|ไรซ์|ข้าว','egg|เอ้ก|ไข่','sugar|ชู-การ์|น้ำตาล','restaurant|เรส-เทอ-รองท์|ร้านอาหาร','snack|สแน็ค|ขนมขบเคี้ยว','recipe|เรส-ซิ-พี่|สูตรอาหาร'],
+ verb:['cook|คุก|cooked|คุกท์|cooked|คุกท์|ทำอาหาร','bake|เบค|baked|เบคท์|baked|เบคท์|อบ','boil|บอยล์|boiled|บอยล์ด|boiled|บอยล์ด|ต้ม','make|เมค|made|เมด|made|เมด|ทำ','taste|เทสท์|tasted|เทส-ทิด|tasted|เทส-ทิด|ชิม, มีรส','order|ออร์-เดอร์|ordered|ออร์-เดอร์ด|ordered|ออร์-เดอร์ด|สั่ง (อาหาร)','share|แชร์|shared|แชร์ด|shared|แชร์ด|แบ่งปัน','burn|เบิร์น|burned|เบิร์นด์|burned|เบิร์นด์|ไหม้'],
+ adj:['delicious|ดิ-ลิช-เชิส|อร่อย','spicy|สไป-ซี่|เผ็ด','sweet|สวีท|หวาน','full|ฟูล|อิ่ม','fresh|เฟรช|สด'],
+ adv:['tonight|ทู-ไนท์|คืนนี้','together|ทู-เก็ท-เธอร์|ด้วยกัน']},
+{id:'feel',ic:'😊',name:'ความรู้สึกและผู้คน',
+ noun:['friend|เฟรนด์|เพื่อน','parents|แพ-เรนท์ส|พ่อแม่','problem|พรอบ-เบล็ม|ปัญหา','secret|ซี-เคร็ท|ความลับ','party|ปาร์-ตี้|งานเลี้ยง'],
+ verb:['smile|สไมล์|smiled|สไมล์ด|smiled|สไมล์ด|ยิ้ม','cry|คราย|cried|ครายด์|cried|ครายด์|ร้องไห้','laugh|ลาฟ|laughed|ลาฟท์|laughed|ลาฟท์|หัวเราะ','help|เฮลพ์|helped|เฮลพ์ท|helped|เฮลพ์ท|ช่วย','tell|เทล|told|โทลด์|told|โทลด์|บอก','feel|ฟีล|felt|เฟลท์|felt|เฟลท์|รู้สึก','listen|ลิส-เซิ่น|listened|ลิส-เซิ่นด์|listened|ลิส-เซิ่นด์|ฟัง','invite|อิน-ไวท์|invited|อิน-ไว-ทิด|invited|อิน-ไว-ทิด|เชิญ'],
+ adj:['happy|แฮป-ปี้|มีความสุข','sad|แซด|เศร้า','angry|แอง-กรี้|โกรธ','worried|เวอร์-รี่ด|กังวล','proud|พราวด์|ภูมิใจ','scared|สแกร์ด|กลัว','bored|บอร์ด|เบื่อ','surprised|เซอร์-ไพรซ์ด|ประหลาดใจ','nervous|เนอร์-วัส|ประหม่า, ตื่นเต้น','lonely|โลน-ลี่|เหงา'],
+ adv:['very|เว-รี่|มาก (ใช้หน้าคุณศัพท์)','again|อะ-เกน|อีกครั้ง']},
+{id:'tech',ic:'📱',name:'เทคโนโลยี',
+ noun:['phone|โฟน|โทรศัพท์','computer|คอม-พิว-เตอร์|คอมพิวเตอร์','internet|อิน-เทอร์-เน็ท|อินเทอร์เน็ต','game|เกม|เกม','battery|แบท-เทอ-รี่|แบตเตอรี่','message|เมส-เสจ|ข้อความ','password|พาส-เวิร์ด|รหัสผ่าน','video|วิ-ดี-โอ|วิดีโอ'],
+ verb:['charge|ชาร์จ|charged|ชาร์จด์|charged|ชาร์จด์|ชาร์จ (แบตเตอรี่)','play|เพลย์|played|เพลย์ด|played|เพลย์ด|เล่น','send|เซนด์|sent|เซนท์|sent|เซนท์|ส่ง','call|คอล|called|คอลด์|called|คอลด์|โทรหา','break|เบรค|broke|โบรค|broken|โบร-เคิ่น|ทำพัง, ทำแตก','turn off|เทิร์น ออฟ|turned off|เทิร์นด์ ออฟ|turned off|เทิร์นด์ ออฟ|ปิด (เครื่อง)','download|ดาวน์-โหลด|downloaded|ดาวน์-โหล-ดิด|downloaded|ดาวน์-โหล-ดิด|ดาวน์โหลด','watch|วอทช์|watched|วอทช์ท|watched|วอทช์ท|ดู'],
+ adj:['new|นิว|ใหม่','old|โอลด์|เก่า','fast|ฟาสท์|เร็ว','slow|สโลว์|ช้า','broken|โบร-เคิ่น|เสีย, พัง'],
+ adv:['online|ออน-ไลน์|ออนไลน์','all night|ออล ไนท์|ทั้งคืน']},
+{id:'dream',ic:'🌟',name:'อาชีพและความฝัน',
+ noun:['singer|ซิง-เงอร์|นักร้อง','nurse|เนิร์ส|พยาบาล','pilot|ไพ-ล็อท|นักบิน','astronaut|แอส-โทร-นอท|นักบินอวกาศ','police officer|โพ-ลีส ออฟ-ฟิ-เซอร์|ตำรวจ','superhero|ซู-เปอร์-ฮี-โร่|ซูเปอร์ฮีโร่','king|คิง|กษัตริย์, ราชา','job|จ็อบ|งาน, อาชีพ'],
+ verb:['become|บี-คัม|became|บี-เคม|become|บี-คัม|กลายเป็น','work|เวิร์ค|worked|เวิร์คท์|worked|เวิร์คท์|ทำงาน','build|บิลด์|built|บิลท์|built|บิลท์|สร้าง','change|เชนจ์|changed|เชนจ์ด|changed|เชนจ์ด|เปลี่ยน','give|กิฟ|gave|เกฟ|given|กิฟ-เวิ่น|ให้','have|แฮฟ|had|แฮด|had|แฮด|มี','be|บี|was / were|วอส / เวอร์|been|บีน|เป็น, อยู่, คือ','know|โนว์|knew|นิว|known|โนน|รู้'],
+ adj:['famous|เฟ-มัส|มีชื่อเสียง','brave|เบรฟ|กล้าหาญ','invisible|อิน-วิส-ซิ-เบิ้ล|ล่องหน, มองไม่เห็น','powerful|พาว-เวอร์-ฟูล|ทรงพลัง','kind|ไคนด์|ใจดี'],
+ adv:['all over the world|ออล โอ-เวอร์ เดอะ เวิร์ลด์|ทั่วโลก','one day|วัน เดย์|วันหนึ่ง (ในอนาคต)']},
+{id:'luck',ic:'🍀',name:'โชคและความเชื่อ',
+ noun:['luck|ลัค|โชค','mirror|มิร์-เรอร์|กระจกเงา','ghost|โกสท์|ผี','dream|ดรีม|ความฝัน','number|นัม-เบอร์|ตัวเลข','temple|เทม-เพิ้ล|วัด','black cat|แบล็ค แคท|แมวดำ','wish|วิช|คำอธิษฐาน'],
+ verb:['open|โอ-เพิ่น|opened|โอ-เพิ่นด์|opened|โอ-เพิ่นด์|เปิด','believe|บิ-ลีฟ|believed|บิ-ลีฟด์|believed|บิ-ลีฟด์|เชื่อ','pray|เพรย์|prayed|เพรย์ด|prayed|เพรย์ด|สวดมนต์, อธิษฐาน','choose|ชูส|chose|โชส|chosen|โช-เซิ่น|เลือก','meet|มีท|met|เม็ท|met|เม็ท|พบ, เจอ','happen|แฮพ-เพิ่น|happened|แฮพ-เพิ่นด์|happened|แฮพ-เพิ่นด์|เกิดขึ้น','come true|คัม ทรู|came true|เคม ทรู|come true|คัม ทรู|เป็นจริง','drop|ดร็อพ|dropped|ดร็อพท์|dropped|ดร็อพท์|ทำตก'],
+ adj:['lucky|ลัค-กี้|โชคดี','unlucky|อัน-ลัค-กี้|โชคร้าย','strange|สเตรนจ์|แปลก','afraid|อะ-เฟรด|กลัว','true|ทรู|จริง'],
+ adv:['at night|แอท ไนท์|ตอนกลางคืน','indoors|อิน-ดอร์ส|ในบ้าน, ในอาคาร']},
+{id:'helper',ic:'🔧',name:'คำช่วยสร้างประโยค',
+ pron:['I|ไอ|ฉัน','you|ยู|คุณ, เธอ','he|ฮี|เขา (ผู้ชาย)','she|ชี|เธอ (ผู้หญิง)','it|อิท|มัน','we|วี|พวกเรา','they|เดย์|พวกเขา','my friend|มาย เฟรนด์|เพื่อนของฉัน'],
+ aux:['will|วิล|จะ (Type 1)',"won't|โวนท์|จะไม่ (Type 1)",'would|วูด|จะ (เรื่องสมมติ Type 2)',"wouldn't|วู-เดิ่นท์|จะไม่ (Type 2)",'could|คูด|สามารถ (Type 2)','were|เวอร์|เป็น อยู่ คือ (Type 2 ใช้ได้กับทุกประธาน)','had|แฮด|ใช้คู่กับ V3 ในท่อน If ของ Type 3',"hadn't|แฮด-เดิ่นท์|ไม่ได้ (ใช้คู่กับ V3 ใน Type 3)",'would have|วูด แฮฟ|คงจะ...แล้ว (ใช้คู่กับ V3 ใน Type 3)',"don't|โดนท์|ไม่ (ใช้กับ I you we they)","doesn't|ดัซ-เซิ่นท์|ไม่ (ใช้กับ he she it)","didn't|ดิด-เดิ่นท์|ไม่ (ใช้ในท่อน If ของ Type 2)"],
+ conj:['if|อิฟ|ถ้า','unless|อัน-เลส|ถ้า...ไม่'],
+ time:['now|นาว|ตอนนี้','yesterday|เยส-เตอร์-เดย์|เมื่อวาน','last night|ลาสท์ ไนท์|เมื่อคืน','last year|ลาสท์ เยียร์|ปีที่แล้ว','next year|เน็กซ์ท เยียร์|ปีหน้า']}
+];
+var POS={
+ noun:{th:'คำนาม',en:'Noun',c:'#0284c7'},verb:{th:'คำกริยา',en:'Verb',c:'#7c3aed'},adj:{th:'คุณศัพท์',en:'Adjective',c:'#db2777'},adv:{th:'คำวิเศษณ์ / วลี',en:'Adverb & Phrase',c:'#059669'},
+ pron:{th:'คำสรรพนาม (ประธาน)',en:'Pronoun',c:'#0284c7'},aux:{th:'กริยาช่วย',en:'Helping verb',c:'#7c3aed'},conj:{th:'คำเชื่อม',en:'Connector',c:'#ea580c'},time:{th:'คำบอกเวลา',en:'Time',c:'#059669'}
+};
+/* สร้างรายการคำทั้งหมด */
+var ALL=[];
+TOPICS.forEach(function(t){Object.keys(POS).forEach(function(p){(t[p]||[]).forEach(function(s){
+  var a=s.split('|'),o={t:t.id,p:p,id:t.id+'|'+p+'|'+a[0]};
+  if(p==='verb'){o.en=a[0];o.rd=a[1];o.f=[[a[0],a[1]],[a[2],a[3]],[a[4],a[5]]];o.th=a[6];}
+  else{o.en=a[0];o.rd=a[1];o.th=a[2];}
+  ALL.push(o);});});});
+var cur={topic:'school',pos:'all',q:''},basket=[];
+try{basket=JSON.parse(localStorage.getItem('ifvocab_basket'))||[];}catch(e){}
+function saveB(){try{localStorage.setItem('ifvocab_basket',JSON.stringify(basket));}catch(e){}updB();}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+function byId(id){for(var i=0;i<ALL.length;i++)if(ALL[i].id===id)return ALL[i];}
+
+function drawTopics(){
+  document.getElementById('topics').innerHTML=TOPICS.map(function(t){
+    return '<button class="tp'+(cur.topic===t.id&&!cur.q?' on':'')+'" data-tp="'+t.id+'"><span>'+t.ic+'</span>'+t.name+'<small>'+ALL.filter(function(w){return w.t===t.id;}).length+' คำ</small></button>';}).join('');
+}
+function posOf(tid){var t=TOPICS.filter(function(x){return x.id===tid;})[0];return Object.keys(POS).filter(function(p){return t[p];});}
+function drawPos(){
+  var el=document.getElementById('pos');
+  if(cur.q){el.innerHTML='';return;}
+  var ps=posOf(cur.topic);
+  el.innerHTML='<button class="pb'+(cur.pos==='all'?' on':'')+'" style="--c:#334155" data-pos="all">ทั้งหมด</button>'+
+   ps.map(function(p){return '<button class="pb'+(cur.pos===p?' on':'')+'" style="--c:'+POS[p].c+'" data-pos="'+p+'">'+POS[p].en+' • '+POS[p].th+'</button>';}).join('');
+}
+function card(w){
+  var P=POS[w.p],kept=basket.indexOf(w.id)>=0;
+  return '<div class="card" style="--c:'+P.c+'" data-id="'+esc(w.id)+'">'+(kept?'<span class="star">⭐</span>':'')+
+   '<div class="en">'+esc(w.en)+'</div><div class="rd">'+w.rd+'</div><div class="th">'+w.th+'</div>'+
+   (w.f?'<div class="forms">'+esc(w.f[1][0])+' • '+esc(w.f[2][0])+'</div>':'')+'</div>';
+}
+function drawList(){
+  var el=document.getElementById('list'),h='';
+  if(cur.q){
+    var q=cur.q.toLowerCase(),res=ALL.filter(function(w){return w.en.toLowerCase().indexOf(q)>=0||w.th.indexOf(cur.q)>=0||(w.f&&(w.f[1][0]+' '+w.f[2][0]).toLowerCase().indexOf(q)>=0);});
+    h=res.length?'<div class="sec" style="--c:#0369a1">ผลการค้นหา <small>'+res.length+' คำ</small></div><div class="grid">'+res.map(card).join('')+'</div>':'<div class="empty">ไม่พบคำนี้ ลองค้นด้วยคำอื่นนะ</div>';
+  }else{
+    var ps=cur.pos==='all'?posOf(cur.topic):[cur.pos];
+    ps.forEach(function(p){
+      var ws=ALL.filter(function(w){return w.t===cur.topic&&w.p===p;});
+      h+='<div class="sec" style="--c:'+POS[p].c+'">'+POS[p].en+' • '+POS[p].th+' <small>'+ws.length+' คำ</small></div><div class="grid">'+ws.map(card).join('')+'</div>';
+    });
+  }
+  el.innerHTML=h;
+}
+function draw(){drawTopics();drawPos();drawList();}
+
+/* เสียง */
+function speak(text,lang,rate){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=rate;
+    var vs=speechSynthesis.getVoices(),p=lang.slice(0,2);
+    for(var i=0;i<vs.length;i++){if(vs[i].lang.replace('_','-').toLowerCase().indexOf(p)===0){u.voice=vs[i];break;}}
+    speechSynthesis.speak(u);}catch(e){}
+}
+function thSay(m){return m.replace(/\(.*?\)/g,'').replace(/\.\.\./g,' ').replace(/,/g,' หรือ ');}
+function enSay(w){return w.replace(/ \/ /g,', ');}
+var sheet=document.getElementById('sheet'),sheetIn=document.getElementById('sheetIn');
+function sayBtns(word){return '<button class="say" data-say="'+esc(enSay(word))+'">🔊</button><button class="say" data-say="'+esc(enSay(word))+'" data-slow="1">🐢</button>';}
+function openWord(id){
+  var w=byId(id),P=POS[w.p],kept=basket.indexOf(w.id)>=0,h='<button class="x" data-close="1">✕</button>';
+  h+='<span class="badge" style="--c:'+P.c+'">'+P.en+' • '+P.th+'</span>';
+  h+='<div class="big">'+esc(w.en)+'</div><div class="rdl">คำอ่าน: <b>'+w.rd+'</b></div><div class="mean">คำแปล: <b>'+w.th+'</b></div>';
+  h+='<div class="btns"><button class="say" data-say="'+esc(enSay(w.en))+'">🔊 ฟังเสียง</button><button class="say" data-say="'+esc(enSay(w.en))+'" data-slow="1">🐢 ช้า ๆ</button><button class="say th" data-say="'+esc(thSay(w.th))+'" data-th="1">🔊 ฟังคำแปล</button></div>';
+  if(w.f){
+    ['V1','V2','V3'].forEach(function(l,i){h+='<div class="fr"><span class="lbl">'+l+'</span><span class="w">'+esc(w.f[i][0])+'</span><span class="r">'+w.f[i][1]+'</span>'+sayBtns(w.f[i][0])+'</div>';});
+    h+='<div class="hint">📌 Type 0 และ 1 ใช้ <b>V1</b> • Type 2 ท่อน If ใช้ <b>V2</b> ท่อนผลใช้ would + <b>V1</b> • Type 3 ใช้ had + <b>V3</b> และ would have + <b>V3</b></div>';
+  }
+  if(w.p==='adj')h+='<div class="hint">📌 คุณศัพท์ใช้หลัง verb to be เช่น am / is / are / was / were / will be / would be / had been</div>';
+  h+='<button class="keep'+(kept?' kept':'')+'" data-keep="'+esc(w.id)+'">'+(kept?'✓ เก็บแล้ว (แตะเพื่อนำออก)':'⭐ เก็บคำนี้ไว้ใช้แต่งประโยค')+'</button>';
+  sheetIn.innerHTML=h;sheet.classList.add('on');sheet.scrollTop=0;
+  speak(enSay(w.en),'en-US',0.8);
+}
+function openBasket(){
+  var h='<button class="x" data-close="1">✕</button><div class="big" style="font-size:1.5rem">⭐ คำที่เก็บไว้</div>';
+  if(!basket.length)h+='<p>ยังไม่มีคำที่เก็บไว้ แตะคำศัพท์แล้วกด ⭐ เก็บคำ</p>';
+  else{
+    h+='<p style="color:#475569">นำคำเหล่านี้ไปแต่งประโยค If-Clause ด้วยตัวเองในใบงาน</p>';
+    basket.forEach(function(id){var w=byId(id);if(!w)return;
+      h+='<div class="bk"><div class="t" data-open="'+esc(id)+'" style="cursor:pointer"><b>'+esc(w.en)+'</b> '+(w.f?'<span>('+esc(w.f[1][0])+', '+esc(w.f[2][0])+')</span> ':'')+'<br><span>'+POS[w.p].th+' • '+w.rd+' • '+w.th+'</span></div><button class="say" data-say="'+esc(enSay(w.en))+'">🔊</button><button class="rm" data-rm="'+esc(id)+'">ลบ</button></div>';});
+    h+='<button class="keep kept" data-clear="1">🗑️ ล้างคำที่เก็บไว้ทั้งหมด</button>';
+  }
+  sheetIn.innerHTML=h;sheet.classList.add('on');sheet.scrollTop=0;
+}
+function updB(){document.getElementById('basketBtn').textContent='⭐ คำที่เก็บไว้ ('+basket.length+')';}
+function hide(){sheet.classList.remove('on');}
+document.addEventListener('click',function(e){
+  var t=e.target,a;
+  if((a=t.closest('[data-tp]'))){cur.topic=a.dataset.tp;cur.pos='all';cur.q='';document.getElementById('q').value='';hide();draw();return;}
+  if((a=t.closest('[data-pos]'))){cur.pos=a.dataset.pos;hide();drawPos();drawList();return;}
+  if((a=t.closest('.card'))){openWord(a.dataset.id);return;}
+  if((a=t.closest('[data-say]'))){speak(a.dataset.say,a.dataset.th?'th-TH':'en-US',a.dataset.slow?0.45:(a.dataset.th?0.9:0.8));return;}
+  if((a=t.closest('[data-keep]'))){var id=a.dataset.keep,i=basket.indexOf(id);if(i>=0)basket.splice(i,1);else basket.push(id);saveB();openWord(id);drawList();return;}
+  if((a=t.closest('[data-rm]'))){basket.splice(basket.indexOf(a.dataset.rm),1);saveB();openBasket();drawList();return;}
+  if((a=t.closest('[data-open]'))){openWord(a.dataset.open);return;}
+  if(t.closest('[data-clear]')){if(t.closest('[data-clear]').dataset.sure){basket=[];saveB();openBasket();drawList();}else{t.closest('[data-clear]').dataset.sure='1';t.closest('[data-clear]').textContent='⚠️ แตะอีกครั้งเพื่อยืนยัน';}return;}
+  if(t.closest('#basketBtn')){openBasket();return;}
+  if(t.closest('[data-close]')||!t.closest('#sheet'))hide();
+});
+document.getElementById('q').addEventListener('input',function(){cur.q=this.value.trim();hide();draw();});
+if('speechSynthesis' in window){try{speechSynthesis.getVoices();}catch(e){}}
+updB();draw();
+</script>
+</body>
+</html>
